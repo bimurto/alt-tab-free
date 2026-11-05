@@ -120,7 +120,7 @@ class AnchoredPopover: NSPopover {
     private func monitorDismissalEvents() {
         guard dismissesOnEscapeAndOutsideClick else { return }
         let events: NSEvent.EventTypeMask = [.keyDown, .leftMouseDown, .rightMouseDown, .otherMouseDown]
-        // The gate does not take focus, so dismissal must also work while another app is active.
+        // A popover that takes no focus must also be dismissible while another app is active.
         dismissalMonitors = [
             NSEvent.addGlobalMonitorForEvents(matching: events) { [weak self] in
                 self?.handleDismissalEvent($0, isGlobal: true)

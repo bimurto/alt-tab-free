@@ -30,19 +30,14 @@ final class SearchModeResolverTests: XCTestCase {
         XCTAssertEqual(SearchModeResolver.toggle(mode: .editing), .disable)
     }
 
-    // MARK: - C. Enter editing (Pro-gated)
+    // MARK: - C. Enter editing
 
     func testEnterFromOffEntersEditing() {
-        XCTAssertEqual(SearchModeResolver.enableEditing(mode: .off, canSearch: true), .enterEditing)
+        XCTAssertEqual(SearchModeResolver.enableEditing(mode: .off), .enterEditing)
     }
 
     func testEnterWhenAlreadyEditingJustPlacesCaret() {
-        XCTAssertEqual(SearchModeResolver.enableEditing(mode: .editing, canSearch: true), .placeCaretOnly)
-    }
-
-    func testEnterBlockedWhenSearchNotEntitled() {
-        // Gate is checked before the already-editing / state branches.
-        XCTAssertEqual(SearchModeResolver.enableEditing(mode: .off, canSearch: false), .proGateBlocked)
+        XCTAssertEqual(SearchModeResolver.enableEditing(mode: .editing), .placeCaretOnly)
     }
 
     // MARK: - D. Disable

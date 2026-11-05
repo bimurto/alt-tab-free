@@ -14,10 +14,18 @@ class PreferencesMigrations {
         }
     }
 
+    static var isFreshInstall: Bool { defaults.bool(forKey: "isFreshInstall") }
+
+    /// Only `migratePreferences()` can still observe a nil `preferencesVersion`, so it records the answer once.
+    static func markFreshInstallIfUnknown(_ value: Bool) {
+        guard defaults.object(forKey: "isFreshInstall") == nil else { return }
+        defaults.set(value, forKey: "isFreshInstall")
+    }
+
     static func migratePreferences() {
         let preferencesKey = "preferencesVersion"
         let existingVersion = Self.defaults.string(forKey: preferencesKey)
-        ProTransitionState.markFreshInstallIfUnknown(existingVersion == nil)
+        markFreshInstallIfUnknown(existingVersion == nil)
         if let versionInPlist = existingVersion {
             if versionInPlist != "#VERSION#" && versionInPlist.compare(App.version, options: .numeric) != .orderedDescending {
                 updateToNewPreferences(versionInPlist)

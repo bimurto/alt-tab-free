@@ -3,7 +3,7 @@
 `main.svg` is the self-contained “Promesse centrée” composition: the website's
 headline and subtitle, a download button, download and GitHub star counts, and
 an eight-second looping window-switching demonstration. The README links the
-whole image to https://alt-tab.app/.
+whole image to the latest release.
 
 Regenerate it with Python's standard library:
 

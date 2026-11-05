@@ -4,8 +4,8 @@
 
 ## Summary
 
-The Pro windows and the switcher show usage counts ("Search uses during your trial: 1,234").
-`UsageStatsTestable` formats those counts for display.
+Badge accessibility labels show counts ("Red badge with number 1,234"). `UsageStatsTestable` formats those
+counts for display.
 
 ## Behavior & edge cases
 

@@ -169,7 +169,7 @@ final class AnchoredPopoverTests: XCTestCase {
         popover.close()
     }
 
-    func testRejectedFallbackReleasesThePromptSlotWithoutAcknowledgingOrRetrying() {
+    func testRejectedFallbackReleasesTheContentWithoutAcknowledgingOrRetrying() {
         let popover = TestPopover()
         let anchor = NSView()
         popover.readiness = .unavailable
@@ -210,7 +210,7 @@ final class AnchoredPopoverTests: XCTestCase {
         popover.close()
     }
 
-    func testTheTrialAnnouncementIsConsumedOnlyAfterThePopoverAppears() {
+    func testOnShownRunsOnlyAfterThePopoverAppears() {
         let popover = TestPopover()
         let anchor = NSView()
         var announcements = 0
@@ -242,7 +242,7 @@ final class AnchoredPopoverTests: XCTestCase {
         popover.close()
     }
 
-    func testClosingAQueuedReminderPreventsItFromAppearingAfterPurchase() {
+    func testClosingAQueuedPopoverPreventsItFromAppearing() {
         let popover = TestPopover()
         let anchor = NSView()
         var announcements = 0
